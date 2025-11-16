@@ -1,0 +1,45 @@
+<!doctype html>
+<title>SpecStation — Builds</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a class="logo" href="index.html">SpecStation</a>
+<nav class="main-nav">
+<a href="builds.html">Builds</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a class="btn" href="#order">Order</a>
+</nav>
+</div>
+</header>
+
+
+<main class="container site-main">
+<section class="card">
+<h1>All Builds</h1>
+<p class="muted">Filter and browse our available prebuilt rigs and custom options.</p>
+
+
+<div class="filters">
+<select id="categoryFilter"><option value="all">All categories</option><option value="gaming">Gaming</option><option value="creator">Creator</option><option value="office">Office</option></select>
+<input id="searchInput" placeholder="Search builds..." />
+</div>
+
+
+<div class="grid" id="buildsGrid"></div>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<div class="container">
+<small>© SpecStation</small>
+</div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>

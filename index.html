@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SpecStation — Home</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+<div class="container header-inner">
+<a class="logo" href="index.html">SpecStation</a>
+<nav class="main-nav">
+<a href="builds.html">Builds</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a class="btn" href="#order">Order</a>
+</nav>
+</div>
+</header>
+
+
+<main class="container site-main">
+<section class="hero card">
+<div>
+<h1>Get a PC that fits your needs — <span class="accent">fast</span> & affordable.</h1>
+<p>SpecStation provides off-the-shelf and custom-built PCs for gaming, content creation, and office use. Choose a build, customize it, and we deliver for free across Metro Manila.</p>
+<div class="cta-row">
+<a class="btn" href="builds.html">Browse Builds</a>
+<a class="btn ghost" href="contact.html">Contact Us</a>
+</div>
+<div class="chips">
+<span class="chip">Lowest price guarantee</span>
+<span class="chip">Free Metro Manila delivery</span>
+<span class="chip">Warranty & support</span>
+</div>
+</div>
+
+
+<aside class="order-card card" id="order">
+<h3>Your Order</h3>
+<div id="cart" class="cart-list">(Cart is empty)</div>
+<div class="subtotal">Subtotal: <strong id="subtotal">₱0</strong></div>
+<form id="orderForm" class="order-form">
+<input type="text" id="name" placeholder="Full name" required />
+<input type="text" id="address" placeholder="Delivery address (Metro Manila only)" required />
+<input type="tel" id="phone" placeholder="Phone number" required />
+<button type="submit" class="btn">Checkout — Place Order</button>
+</form>
+<small class="muted">We accept GCash and bank transfer. Orders processed within 2 business days.</small>
+</aside>
+</section>
+
+
+<section class="featured card">
+<h2>Featured Builds</h2>
+<div class="grid" id="featuredGrid"></div>
+</section>
+
+
+</main>
+
+
+<footer class="site-footer">
+<div class="container">
+<small>© SpecStation — Free delivery within Metro Manila • Email: sales@specstation.ph</small>
+</div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>

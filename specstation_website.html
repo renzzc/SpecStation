@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpecStation — Custom & Prebuilt PCs</title>
+  <meta name="description" content="SpecStation — purchase and avail custom & prebuilt PC builds. Free delivery across Metro Manila." />
+  <style>
+    :root{
+      --accent:#0f172a; /* deep navy */
+      --brand:#0ea5a3; /* teal-ish */
+      --muted:#6b7280;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.06);
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: light;
+    }
+
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#f8fafc 0%, #eef2ff 100%);color:var(--accent);min-height:100vh}
+
+    header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;background:transparent}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo-mark{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#06b6d4);display:grid;place-items:center;color:white;font-weight:700}
+    .brand{font-weight:700;font-size:18px}
+    nav{display:flex;gap:14px;align-items:center}
+    a.btn{background:var(--brand);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
+
+    .container{max-width:1200px;margin:36px auto;padding:0 20px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:30px}
+    .hero-copy h1{font-size:36px;margin:0 0 12px}
+    .highlight{color:var(--brand)}
+    .hero-copy p{color:var(--muted);margin:0 0 18px}
+    .hero-ctas{display:flex;gap:12px}
+
+    /* Quick features */
+    .features{display:flex;gap:12px;margin-top:18px}
+    .chip{background:var(--card);padding:10px 12px;border-radius:12px;box-shadow:0 6px 18px rgba(12,17,43,0.06);font-weight:600;color:var(--accent)}
+
+    /* Card */
+    .card{background:linear-gradient(180deg, white, #fbfdff);border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(2,6,23,0.05)}
+
+    /* Build list */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+    .product{border-radius:12px;padding:14px;background:linear-gradient(180deg,#fff,#fcfeff);border:1px solid rgba(12,17,43,0.04)}
+    .product .title{font-weight:700}
+    .price{font-size:18px;font-weight:800;color:var(--brand)}
+    .specs{font-size:13px;color:var(--muted);margin:10px 0}
+    .product button{width:100%;padding:10px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:700}
+
+    /* Sidebar order */
+    .sidebar{position:sticky;top:20px}
+    .order-title{font-weight:700;margin-bottom:10px}
+    .cart-list{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+    .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:10px;background:var(--glass)}
+    .checkout{display:flex;gap:8px;align-items:center}
+
+    /* About & Contact */
+    footer{margin-top:30px;padding:28px 0;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .container{padding:0 18px}
+    }
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
+      header{padding:12px 16px}
+      .hero-copy h1{font-size:26px}
+      .logo-mark{width:40px;height:40px}
+    }
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div><img src="C:\Users\Rence\Downloads\Specss.png" width="90" height="90"></div>
+      <div>
+        <div class="brand">SpecStation</div>
+        <div class="small muted">Custom & Prebuilt PCs — Metro Manila delivery</div>
+      </div>
+    </div>
+    <nav>
+      <a class="small muted" href="#builds">Builds</a>
+      <a class="small muted" href="#about">About</a>
+      <a class="btn" href="#order">Order Now</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Get a PC that fits your needs — <span class="highlight">fast</span> & affordable.</h1>
+        <p>SpecStation provides off-the-shelf and custom-built PCs for gaming, content creation, and office use. Choose a build, customize it, and we deliver for free across Metro Manila.</p>
+        <div class="hero-ctas">
+          <a class="btn" href="#builds">Browse Builds</a>
+          <a class="btn" href="#contact" style="background:transparent;color:var(--accent);border:1px solid rgba(12,17,43,0.08)">Contact Us</a>
+        </div>
+        <div class="features">
+          <div class="chip">Lowest price guarantee</div>
+          <div class="chip">Free Metro Manila delivery</div>
+          <div class="chip">Warranty & support</div>
+        </div>
+      </div>
+
+      <aside class="sidebar card">
+        <div class="order-title">Your Order</div>
+        <div id="cart" class="cart-list">
+          <!-- cart items injected here -->
+        </div>
+        <div class="small muted">Subtotal: <strong id="subtotal">₱0</strong></div>
+        <div style="height:12px"></div>
+        <form id="orderForm">
+          <input type="text" id="name" placeholder="Full name" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(12,17,43,0.06);margin-bottom:8px" />
+          <input type="text" id="address" placeholder="Delivery address (Metro Manila only)" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(12,17,43,0.06);margin-bottom:8px" />
+          <input type="tel" id="phone" placeholder="Phone number" required style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(12,17,43,0.06);margin-bottom:12px" />
+          <button type="submit" class="btn" style="width:100%">Checkout — Place Order</button>
+        </form>
+        <div class="small muted" style="margin-top:10px">We accept cash on delivery and bank transfer. Orders are processed within 2 business days.</div>
+      </aside>
+    </section>
+
+    <section id="builds">
+      <h2 class="muted">Featured Builds</h2>
+      <div class="grid">
+        <div class="product card" data-price="28999" data-name="SpecStation Gaming X1">
+          <div class="title">Gaming X1</div>
+          <div class="price">₱28,999</div>
+          <div class="specs">Ryzen 5 5600X • RTX 3060 • 16GB • 1TB SSD</div>
+          <div class="small muted">Ideal for 1080p high settings gaming.</div>
+          <div style="height:12px"></div>
+          <button class="add">Add to cart</button>
+        </div>
+
+        <div class="product card" data-price="45999" data-name="SpecStation Creator Pro">
+          <div class="title">Creator Pro</div>
+          <div class="price">₱45,999</div>
+          <div class="specs">Ryzen 7 7700X • RTX 4070 • 32GB • 2TB SSD</div>
+          <div class="small muted">For video editing and 3D workflows.</div>
+          <div style="height:12px"></div>
+          <button class="add">Add to cart</button>
+        </div>
+
+        <div class="product card" data-price="21999" data-name="SpecStation Office Mini">
+          <div class="title">Office Mini</div>
+          <div class="price">₱21,999</div>
+          <div class="specs">i3 12100 • Integrated Graphics • 8GB • 512GB SSD</div>
+          <div class="small muted">Reliable and energy efficient for daily work.</div>
+          <div style="height:12px"></div>
+          <button class="add">Add to cart</button>
+        </div>
+
+        <!-- Additional example builds -->
+        <div class="product card" data-price="79999" data-name="SpecStation Ultimate">
+          <div class="title">Ultimate</div>
+          <div class="price">₱79,999</div>
+          <div class="specs">Ryzen 9 7950X • RTX 4090 • 64GB • 4TB SSD</div>
+          <div class="small muted">Top-tier for enthusiasts and pro creators.</div>
+          <div style="height:12px"></div>
+          <button class="add">Add to cart</button>
+        </div>
+
+        <div class="product card" data-price="33999" data-name="SpecStation Streamer">
+          <div class="title">Streamer</div>
+          <div class="price">₱33,999</div>
+          <div class="specs">Ryzen 7 5800X • RTX 3070 • 16GB • 1TB SSD</div>
+          <div class="small muted">Balanced build for streaming & gaming.</div>
+          <div style="height:12px"></div>
+          <button class="add">Add to cart</button>
+        </div>
+
+        <div class="product card" data-price="15999" data-name="SpecStation Mini Home">
+          <div class="title">Mini Home</div>
+          <div class="price">₱15,999</div>
+          <div class="specs">Athlon • Integrated Graphics • 8GB • 256GB SSD</div>
+          <div class="small muted">Basic home PC for browsing and light tasks.</div>
+          <div style="height:12px"></div>
+          <button class="add">Add to cart</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:34px">
+      <div class="card">
+        <h3>About SpecStation</h3>
+        <p class="muted">SpecStation started to make quality PC builds more accessible — whether you want a ready-made gaming rig or a tailored workstation. We offer assembly, testing, and warranty support. Free delivery within Metro Manila.</p>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:18px">
+      <div class="card">
+        <h3>Contact & Support</h3>
+        <p class="muted">Email: sales@specstation.ph • Phone: +63 912 345 6789</p>
+        <p class="muted">Business hours: Mon–Fri 9:00–18:00</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container small muted">© SpecStation — Built for customers in Metro Manila.</div>
+    </footer>
+  </main>
+
+  <script>
+    // Simple cart functionality — client-side demo only
+    const addButtons = document.querySelectorAll('.add');
+    const cartEl = document.getElementById('cart');
+    const subtotalEl = document.getElementById('subtotal');
+    let cart = [];
+
+    function formatPHP(n){ return '₱' + n.toLocaleString(); }
+
+    function renderCart(){
+      cartEl.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, idx) =>{
+        total += item.price;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `<div><strong>${item.name}</strong><div class="small muted">${item.qty} × ${formatPHP(item.price)}</div></div><div style="text-align:right"><div>${formatPHP(item.qty * item.price)}</div><div style="margin-top:8px"><button data-idx="${idx}" class="remove small">Remove</button></div></div>`;
+        cartEl.appendChild(div);
+      });
+      subtotalEl.textContent = formatPHP(total);
+      // attach remove handlers
+      document.querySelectorAll('.remove').forEach(btn=>btn.addEventListener('click', e=>{
+        const i = Number(e.target.dataset.idx);
+        cart.splice(i,1);
+        renderCart();
+      }))
+    }
+
+    addButtons.forEach(btn=>btn.addEventListener('click', e=>{
+      const card = e.target.closest('.product');
+      const name = card.dataset.name;
+      const price = Number(card.dataset.price);
+      // if already in cart, increment qty
+      const existing = cart.find(it=>it.name===name);
+      if(existing) existing.qty += 1; else cart.push({name,price,qty:1});
+      renderCart();
+    }));
+
+    // handle order submit
+    document.getElementById('orderForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      if(cart.length === 0){ alert('Please add at least one build to your cart.'); return; }
+      const order = {
+        name: document.getElementById('name').value,
+        address: document.getElementById('address').value,
+        phone: document.getElementById('phone').value,
+        items: cart,
+        subtotal: subtotalEl.textContent
+      };
+      // In a real app, this would be sent to the server. We'll just show a confirmation demo.
+      alert('Order placed!\n\n' + JSON.stringify(order, null, 2) + '\n\nWe will contact you to confirm delivery and payment.');
+      // reset demo cart
+      cart = [];
+      renderCart();
+      document.getElementById('orderForm').reset();
+    });
+
+    // initial render
+    renderCart();
+  </script>
+</body>
+</html>
